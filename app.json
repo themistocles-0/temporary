@@ -1,0 +1,10 @@
+{
+    "buildpacks": [
+        {
+            "url": "git://github.com/johnbeynon/heroku-buildpack-wget.git"
+        },
+        {
+            "url": "heroku/nodejs"
+        }
+    ]
+}
