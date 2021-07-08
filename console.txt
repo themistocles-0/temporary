@@ -1,0 +1,2 @@
+Current working directory: /storage/0403-0201/temporary
+The server is running on port 8080

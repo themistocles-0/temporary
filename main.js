@@ -56,7 +56,7 @@ global.project = null;
 global.mongodb = [];
 //
 const { MongoClient, GridFSBucket } = require("mongodb");
-
+/*
 var URI = process.env.MONGO_DB_URI;
 
 var client = new MongoClient(URI, {
@@ -116,7 +116,7 @@ client.connect(async function(error)
 			client.close();
 		});
 	}
-});
+});*/
 //
 const express = require("express");
 //

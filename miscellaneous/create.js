@@ -1,8 +1,6 @@
 const { spawn, exec } = require("child_process");
 const { createWriteStream, rename: renameFile } = require("fs");
 const { basename } = require("path");
-const { getExtension } = require("mime");
-const { extension: fileExtension } = require("mime-types");
 
 function download()
 {
