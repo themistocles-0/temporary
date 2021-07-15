@@ -1,6 +1,6 @@
 {
-	"name": "video modification",
-	"main": "main.js",
+    "name": "temporary",
+    "main": "main.js",
     "dependencies": {
         "express": "4.17.1",
         "mongodb": "3.6.10",
