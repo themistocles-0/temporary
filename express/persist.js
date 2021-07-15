@@ -22,7 +22,7 @@ function upload(clip)
 		});
 		
 		var bucket = new GridFSBucket(client.db("database"), {
-			bucketName: persistent.bucket,
+			bucketName: "bucket",
 			chunkSizeBytes: 1024*1024
 		});
 		
@@ -76,7 +76,7 @@ function download(clip)
 	client.connect(async function(error)
 	{
 		var bucket = new GridFSBucket(client.db("database"), {
-			bucketName: persistent.bucket,
+			bucketName: "bucket",
 			chunkSizeBytes: 1024*1024
 		});
 		

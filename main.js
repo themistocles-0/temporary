@@ -64,58 +64,65 @@ var client = new MongoClient(URI, {
 	useUnifiedTopology: true 
 });
 
-client.connect(async function(error)
+client.connect(function(error)
 {
-	var array = client.db("database").collection("collection").find({}, {}).toArray();
+	if(error)
+	{
+		console.log(error);
+		return;
+	}
 	
-	if(array.length === 0)
+	client.db("database").collection("collection").find({}, {}).toArray(function(exception, array)
 	{
-		console.log("There are currently no videos backed up on mongodb.");
-	}
-	else
-	{
-		var bucket = new GridFSBucket(client.db("database"), {
-			bucketName: persistent.bucket,
-			chunkSizeBytes: 1024*1024
-		});
+		if(array.length === 0)
+		{
+			console.log("There are currently no videos backed up on mongodb.");
+		}
+		else
+		{
+			var bucket = new GridFSBucket(client.db("database"), {
+				bucketName: "bucket",
+				chunkSizeBytes: 1024*1024
+			});
 		
-		var temporary = [];
-		array.forEach(function(document)
-		{
-			document.persist = false;
-			
-			temporary.push(
-				new Promise(function(resolve, reject)
-				{
-					var write = createWriteStream(process.cwd()+"/"+document.frame.begin);
-					var read = bucket.openDownloadStreamByName(document.frame.begin);
-					read.pipe(write);
-					write.on("finish", function()
+			var temporary = [];
+			array.forEach(function(document)
+			{
+				document.persist = false;
+				
+				temporary.push(
+					new Promise(function(resolve, reject)
 					{
-						resolve();
-					});
-				})
-			);
-			
-			temporary.push(
-				new Promise(function(resolve, reject)
-				{
-					var write = createWriteStream(process.cwd()+"/"+document.frame.end);
-					var read = bucket.openDownloadStreamByName(document.frame.end);
-					read.pipe(write);
-					write.on("finish", function()
+						var write = createWriteStream(process.cwd()+"/"+document.frame.begin);
+						var read = bucket.openDownloadStreamByName(document.frame.begin);
+						read.pipe(write);
+						write.on("finish", function()
+						{
+							resolve();
+						});
+					})
+				);
+				
+				temporary.push(
+					new Promise(function(resolve, reject)
 					{
-						resolve();
-					});
-				})
-			);
-		});
-		Promise.all(temporary).then(function()
-		{
-			mongodb = array;
-			client.close();
-		});
-	}
+						var write = createWriteStream(process.cwd()+"/"+document.frame.end);
+						var read = bucket.openDownloadStreamByName(document.frame.end);
+						read.pipe(write);
+						write.on("finish", function()
+						{
+							resolve();
+						});
+					})
+				);
+			});
+			Promise.all(temporary).then(function()
+			{
+				global.mongodb = array;
+				client.close();
+			});
+		}
+	});
 });
 //
 const express = require("express");
