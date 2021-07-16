@@ -243,7 +243,7 @@ function mongodb(request, response)
 
 function result(request, response)
 {
-	var clip = global.project.clips.find(element => element.name === request.params.clip);
+	var clip = global.mongodb.find(element => element.name === request.params.clip);
 	download(clip);
 	
 	//
