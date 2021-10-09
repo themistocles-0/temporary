@@ -55,7 +55,6 @@ console.log("Current working directory: "+process.cwd());
 global.project = null;
 global.mongodb = [];
 
-/*
 const { MongoClient, GridFSBucket } = require("mongodb");
 
 var URI = process.env.MONGO_DB_URI;
@@ -125,7 +124,6 @@ client.connect(function(error)
 		}
 	});
 });
-*/
 
 //
 const express = require("express");
