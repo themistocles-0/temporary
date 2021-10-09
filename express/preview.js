@@ -150,7 +150,7 @@ function preview(request, response)
     {
     	body += "<div style='float:left; margin-right:15px;'>";
     	
-    	body += "<div style='display:block; margin-top:15px; text-align:center; border-radius:2.5px; background-color:blue; width:350px; height:75px;'>";
+    	body += "<div style='display:block; margin-top:15px; text-align:center; border-radius:2.5px; background-color:blue; color:white; width:350px; height:75px;'>";
     	body += "<div style='display:table; width:100%; height:100%;'>";
     	body += "<div style='display:table-cell; vertical-align:middle; width:100%; height:100%'>";
     	body += "Begin:";
@@ -159,7 +159,7 @@ function preview(request, response)
     	body += "</div>";
     	body += "<img src='{{root}}/"+clip.frame.begin+"' alt='{{root}}/"+clip.frame.begin+" not loaded.' style='display:block; margin-top:15px; width:350px; height:auto;'>";
     	
-    	body += "<div style='display:block; margin-top:15px; text-align:center; border-radius:2.5px; background-color:blue; width:350px; height:75px;'>";
+    	body += "<div style='display:block; margin-top:15px; text-align:center; border-radius:2.5px; background-color:blue; color:white; width:350px; height:75px;'>";
     	body += "<div style='display:table; width:100%; height:100%;'>";
     	body += "<div style='display:table-cell; vertical-align:middle; width:100%; height:100%'>";
     	body += "End:";
@@ -203,7 +203,7 @@ function preview(request, response)
     	}
     	else
     	{
-    		body += "Persist the clip "+clip.name+" with begin "+clip.begin+" and end "+clip.end+" to mongodb.";
+    		body += "Persist the clip "+clip.name+" to mongodb.";
     	}
     	body += "</div>";
     	body += "</div>";

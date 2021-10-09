@@ -100,6 +100,7 @@ function extract(request, response)
     body += "</div>";
     body += "</div>";
     //
+    body += "<div style='margin-top:15; overflow-y:scroll; width:715px; height:125px; display:block; border-style:solid; border-color:black; border-radius:2.5px;' id='name-input' contenteditable='true'></div>";
     body += "<table style=''>";
     body += "<tr>";
     body += "<td>";
@@ -141,8 +142,6 @@ function extract(request, response)
     body += "</td>";
     body += "</tr>";
     body += "</table>";
-    
-    body += "<div style='overflow-y:scroll; width:285px; height:125px; display:block; border-style:solid; border-color:black; border-radius:2.5px;' id='name-input' contenteditable='true'></div>";
     
     body += "<div style='display:block; text-align:center; border-style:solid; border-color:black; border-radius:2.5px; width:350px; height:75px; margin-top:15px;'>";
     body += "<div style='display:table; width:100%; height:100%;'>";
