@@ -54,7 +54,8 @@ console.log("Current working directory: "+process.cwd());
 //clips: array
 global.project = null;
 global.mongodb = [];
-//
+
+/*
 const { MongoClient, GridFSBucket } = require("mongodb");
 
 var URI = process.env.MONGO_DB_URI;
@@ -124,6 +125,8 @@ client.connect(function(error)
 		}
 	});
 });
+*/
+
 //
 const express = require("express");
 //
@@ -143,7 +146,7 @@ application.get("/create/:url", require(process.cwd()+"/express/create.js").resu
 application.get("/preview", require(process.cwd()+"/express/preview.js").preview);
 application.get("/preview/:frame", require(process.cwd()+"/express/preview.js").result);
 application.get("/extract", require(process.cwd()+"/express/extract.js").extract);
-application.get("/extract/:begin/:end", require(process.cwd()+"/express/extract.js").result);
+application.get("/extract/:begin/:end/:name", require(process.cwd()+"/express/extract.js").result);
 application.get("/persist/:clip", require(process.cwd()+"/express/persist.js").persist);
 application.get("/mongodb", require(process.cwd()+"/express/persist.js").mongodb);
 application.get("/mongodb/:clip", require(process.cwd()+"/express/persist.js").result);

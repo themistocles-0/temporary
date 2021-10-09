@@ -10,7 +10,7 @@ function extract(request, response)
     head += "</style>";
     //
     var body = "<script> var frame = { begin: '', end: '' }; </script>";
-    body += "<script> var current = '' </script>";
+    body += "<script> var current = ''; </script>";
     body += "<script>";
     body += "function disable()";
     body += "{";
@@ -71,9 +71,15 @@ function extract(request, response)
     body += "<script>";
     body += "function extract()";
     body += "{";
-    body += "if(frame.begin === '' || frame.end === '') { return; }";
-    body += "var url = '{{root}}/extract/'+encodeURIComponent(frame.begin)+'/'+encodeURIComponent(frame.end);";
+    body += "if(frame.begin === '' || frame.end === '' || document.getElementById('name-input').innerText === '') { return; }";
+    body += "var url = '{{root}}/extract/'+encodeURIComponent(frame.begin)+'/'+encodeURIComponent(frame.end)+'/'+encodeURIComponent(document.getElementById('name-input').innerText);";
     body += "window.location = url;";
+    body += "}";
+    body += "</script>";
+    body += "<script>";
+    body += "function name()";
+    body += "{";
+    body += "output = document.getElementById('').innerText;";
     body += "}";
     body += "</script>";
     
@@ -135,6 +141,8 @@ function extract(request, response)
     body += "</td>";
     body += "</tr>";
     body += "</table>";
+    
+    body += "<div style='overflow-y:scroll; width:285px; height:125px; display:block; border-style:solid; border-color:black; border-radius:2.5px;' id='name-input' contenteditable='true'></div>";
     
     body += "<div style='display:block; text-align:center; border-style:solid; border-color:black; border-radius:2.5px; width:350px; height:75px; margin-top:15px;'>";
     body += "<div style='display:table; width:100%; height:100%;'>";
@@ -259,7 +267,7 @@ function result(request, response)
 	var begin = request.params.begin.split(".").shift();
 	var end = request.params.end.split(".").shift();
 	var clip = {
-		name: "",
+		name: request.params.name,
 		begin: {
 			request: request.params.begin,
 			minute: parseInt(begin.split("/").shift()),

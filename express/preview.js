@@ -149,16 +149,24 @@ function preview(request, response)
     global.project.clips.forEach(function(clip)
     {
     	body += "<div style='float:left; margin-right:15px;'>";
-    
+    	
+    	body += "<div style='display:block; margin-top:15px; text-align:center; border-radius:2.5px; background-color:blue; width:350px; height:75px;'>";
+    	body += "<div style='display:table; width:100%; height:100%;'>";
+    	body += "<div style='display:table-cell; vertical-align:middle; width:100%; height:100%'>";
+    	body += "Begin:";
+    	body += "</div>";
+    	body += "</div>";
+    	body += "</div>";
     	body += "<img src='{{root}}/"+clip.frame.begin+"' alt='{{root}}/"+clip.frame.begin+" not loaded.' style='display:block; margin-top:15px; width:350px; height:auto;'>";
-    	body += "<div style='display:block; text-align:left; margin-top:15px;'>";
-    	body += "<span style='color:red;'>Begin:</span> "+clip.begin;
+    	
+    	body += "<div style='display:block; margin-top:15px; text-align:center; border-radius:2.5px; background-color:blue; width:350px; height:75px;'>";
+    	body += "<div style='display:table; width:100%; height:100%;'>";
+    	body += "<div style='display:table-cell; vertical-align:middle; width:100%; height:100%'>";
+    	body += "End:";
     	body += "</div>";
-    
+    	body += "</div>";
+    	body += "</div>";
     	body += "<img src='{{root}}/"+clip.frame.end+"' alt='{{root}}/"+clip.frame.end+" not loaded.' style='display:block; margin-top:15px; width:350px; height:auto;'>";
-    	body += "<div style='display:block; text-align:left; margin-top:15px;'>";
-    	body += "<span style='color:red;'>End:</span> "+clip.end;
-    	body += "</div>";
     
     	body += "<div style='display:block; margin-top:15px; text-align:center; border-radius:2.5px; background-color:red; width:350px; height:75px;'>";
     	body += "<div style='display:table; width:100%; height:100%;'>";

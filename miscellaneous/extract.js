@@ -70,8 +70,6 @@ async function extract(clip)
 		clip.finish = clip.end.minute+":"+clip.end.second;
 	}
 	
-	clip.name = uuid();
-	
 	console.log(await execute(clip.start, clip.finish, clip.name));
 	
 	Promise.all([
@@ -81,8 +79,6 @@ async function extract(clip)
 	{
 	    global.project.clips.push({
 	    	name: clip.name+".mp4",
-	    	begin: clip.start,
-	    	end: clip.finish,
 	    	frame: {
 	    		begin: clip.name+"-begin.jpg",
 	    		end: clip.name+"-end.jpg"
